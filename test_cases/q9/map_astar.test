@@ -1,0 +1,89 @@
+class: "GraphSearchTest"
+algorithm: "aStarSearch"
+
+diagram: """
+*A --> B --> G
+
+A is the start state, G is the goal.  Arrows mark 
+possible state transitions.  This tests whether
+you extract the sequence of actions correctly even
+if your search backtracks.  If you fail this, your
+nodes are not correctly tracking the sequences of
+actions required to reach them.
+"""
+# The following section specifies the search problem and the solution.
+# The graph is specified by first the set of start states, followed by
+# the set of goal states, and lastly by the state transitions which are
+# of the form: 
+#      <start state> <actions> <end state> <cost>
+graph: """
+start_state: Arad
+goal_states: Bucharest
+Arad            0:Arad->Zerind              Zerind          75
+Arad            1:Arad->Sibiu               Sibiu           140
+Arad            2:Arad->Timisoara           Timisoara       118
+Zerind          0:Zerind->Arad              Arad            75
+Zerind          1:Zerind->Oradea            Oradea          71
+Sibiu           0:Sibiu->Arad               Arad            140
+Sibiu           1:Sibiu->Oradea             Oradea          151
+Sibiu           2:Sibiu->Fagaras            Fagaras         99
+Sibiu           3:Sibiu->RimnicuVilcea      RimnicuVilcea   80
+Timisoara       0:Timisoara->Arad           Arad            118
+Timisoara       1:Timisoara->Lugoj          Lugoj           111
+Oradea          0:Oradea->Zerind            Zerind          71
+Oradea          1:Oradea->Sibiu             Sibiu           151
+Fagaras         0:Fagaras->Sibiu            Sibiu           99
+Fagaras         1:Fagaras->Bucharest        Bucharest       211
+RimnicuVilcea   0:RimnicuVilcea->Sibiu      Sibiu           80
+RimnicuVilcea   1:RimnicuVilcea->Craiova    Craiova         146
+RimnicuVilcea   2:RimnicuVilcea->Pitesti    Pitesti         97
+Lugoj           0:Lugoj->Timisoara          Timisoara       111
+Lugoj           1:Lugoj->Mehadia            Mehadia         70
+Bucharest       0:Bucharest->Pitesti        Pitesti         101
+Bucharest       1:Bucharest->Giurgiu        Giurgiu         90
+Bucharest       2:Bucharest->Urziceni       Urziceni        85
+Craiova         0:Craiova->RimnicuVilcea    RimnicuVilcea   146
+Craiova         1:Craiova->Pitesti          Pitesti         138
+Craiova         2:Craiova->Drobeta          Drobeta         120
+Pitesti         0:Pitesti->Bucharest        Bucharest       101
+Pitesti         1:Pitesti->RimnicuVilcea    RimnicuVilcea   97
+Pitesti         2:Pitesti->Craiova          Craiova         138
+Mehadia         0:Mehadia->Lugoj            Lugoj           70
+Mehadia         1:Mehadia->Drobeta          Drobeta         75
+Giurgiu         0:Giurgiu->Bucharest        Bucharest       90
+Urziceni        0:Urziceni->Bucharest       Bucharest       85
+Urziceni        1:Urziceni->Hirsova         Hirsova         98
+Urziceni        2:Urziceni->Vaslui          Vaslui          142
+Drobeta         0:Drobeta->Craiova          Craiova         120
+Drobeta         1:Drobeta->Mehadia          Mehadia         75
+Hirsova         0:Hirsova->Urziceni         Urziceni        98
+Hirsova         1:Hirsova->Eforie           Eforie          86
+Vaslui          0:Vaslui->Urziceni          Urziceni        142
+Vaslui          1:Vaslui->Iasi              Iasi            92
+Eforie          0:Eforie->Hirsova           Hirsova         86
+Iasi            0:Iasi->Vaslui              Vaslui          92
+Iasi            1:Iasi->Neamt               Neamt           87
+Neamt           0:Neamt->Iasi               Iasi            87
+"""
+heuristic: """
+Arad            366
+Bucharest       0
+Craiova         160
+Drobeta         242
+Eforie          161
+Fagaras         176
+Giurgiu         77
+Hirsova         151
+Iasi            226
+Lugoj           244
+Mehadia         241
+Neamt           234
+Oradea          380
+Pitesti         100
+RimnicuVilcea   193
+Sibiu           253
+Timisoara       329
+Urziceni        80
+Vaslui          199
+Zerind          374
+"""
